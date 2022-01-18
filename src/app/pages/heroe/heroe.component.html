@@ -1,0 +1,62 @@
+<h1>Héroe <small>Nombre del Héroe</small></h1>
+<div class="row">
+  <div class="col">
+    <button type="button"
+            class="btn btn-primary float-end" routerLink="/heroes">
+      <i class="bi bi-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+<form class="row d-flex justify-content-center mt-5"
+      #form="ngForm"
+      (ngSubmit)="guardar(form)">
+  <input type="hidden" class="form-control" name="id" [(ngModel)]="heroe.id">
+  <div class="col-10 col-md-8 mt-4">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text"
+           class="form-control"
+           id="nombre"
+           placeholder="Nombre"
+           name="nombre"
+           required
+           pattern="[(áéíóú)a-zA-Z\s]+"
+           [(ngModel)]="heroe.nombre">
+  </div>
+  <div class="col-10 col-md-8 mt-4">
+    <label for="poder" class="form-label">Poder</label>
+    <input type="text"
+           class="form-control"
+           id="poder"
+           placeholder="Poder"
+           name="poder"
+           required
+           pattern="[(áéíóú)a-zA-Z\s]+"
+           [(ngModel)]="heroe.poder">
+  </div>
+  <div class="col-10 col-md-8 mt-4">
+    <label class="form-label" for="estado">Estado</label>
+    <div class="row">
+      <div class="col-10 col-md-8">
+        <input type="checkbox"
+               class="btn-check"
+               id="estado" checked autocomplete="off"
+               name="vivo"
+               [(ngModel)]="heroe.vivo">
+        <button *ngIf="heroe.vivo" class="btn btn-success transition-btn" type="button" (click)="estado()"><i
+          class="bi bi-emoji-smile me-2"></i>Vivo
+        </button>
+        <button *ngIf="!heroe.vivo" class="btn btn-danger transition-btn" type="button" (click)="estado()"><i
+          class="bi bi-emoji-dizzy me-2"></i>Muerto
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mt-4">
+    <div class="row justify-content-center">
+      <div class="col-10 col-md-8">
+        <button type="submit" class="btn btn-primary mb-3 w-100"><i class="bi bi-hdd me-2"></i>Guardar</button>
+      </div>
+    </div>
+  </div>
+</form>
